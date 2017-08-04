@@ -1,0 +1,97 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" class="no-js" data-ng-controller="OssclaMainCtrl" ng-class="pageClass" ng-app="ossclaApp" data-is-mobile ng-csp>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+  <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css styles/main.css -->
+  <!-- injector:css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="bower_components/angular/angular-csp.css">
+  <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+  <!-- endinjector -->
+  <!-- endbuild -->
+
+</head>
+<body>
+  <!--[if lt IE 9]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <header id="page-header" class="header">
+    <nav id="site-navigation">
+      <div class="container-fluid">
+        <p class="navbar-text pull-right" ng-hide="user.admin">(<a href="v1/adminlogin">Login as admin</a> <span class="glyphicon glyphicon-log-in"></span> )</p>
+        <p class="navbar-text pull-right">Logged in as <a href="https://github.com/{{ user.username }}">{{ user.username }}</a><span ng-show="user.admin"> (admin)</span></p>
+        <p class="site-logo visible-sm visible-md visible-lg"></p>
+        <h1><a class="logo-text" href="#/signature">Contributor License Agreement</a></h1>
+      </div>
+    </nav>
+  </header>
+
+  <div id="page-navigation" class="container-fluid" role="navigation" ng-controller="common.NavCtrl">
+    <ul class="nav nav-pills" ng-show="user.admin">
+      <li role="presentation" ng-class="{ 'active': viewLocation === 'signature' }"><a ui-sref="main">Signature <span class="glyphicon glyphicon-pencil"></span></a></li>
+      <li role="presentation" ng-class="{ 'active': viewLocation === 'signatureList' }"><a ui-sref="list">Signature List <span class="glyphicon glyphicon-list"></span></a></li>
+    </ul>
+  </div>
+
+  <div ui-view="main" class="container-fluid container-body">
+  </div>
+
+  <!-- build:js scripts/oldieshim.js -->
+  <!--[if lt IE 9]>
+  <script src="bower_components/es5-shim/es5-shim.js"></script>
+  <script src="bower_components/json3/lib/json3.js"></script>
+  <![endif]-->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+  <script src="bower_components/angular-ui-select/dist/select.js"></script>
+  <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/scripts.js -->
+  <!-- injector:js -->
+  <script src="modules/app.js"></script>
+  <script src="modules/common/common.js"></script>
+  <script src="modules/common/constants.js"></script>
+  <script src="modules/common/controllers/CCLACtrl.js"></script>
+  <script src="modules/common/controllers/MainCtrl.js"></script>
+  <script src="modules/common/controllers/NavCtrl.js"></script>
+  <script src="modules/common/controllers/SignClaCtrl.js"></script>
+  <script src="modules/common/controllers/SignatureCtrl.js"></script>
+  <script src="modules/common/controllers/controllers.js"></script>
+  <script src="modules/common/services/Cla.js"></script>
+  <script src="modules/common/services/NavService.js"></script>
+  <script src="modules/common/services/Organization.js"></script>
+  <script src="modules/common/services/Signature.js"></script>
+  <script src="modules/common/services/UserInfo.js"></script>
+  <script src="modules/common/services/services.js"></script>
+  <script src="modules/routes/routes.js"></script>
+  <!-- endinjector -->
+  <!-- endbuild -->
+</body>
+</html>

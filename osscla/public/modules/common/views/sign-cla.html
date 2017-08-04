@@ -1,0 +1,15 @@
+<div class="alert alert-warning" ng-show="saveError">
+  <p>{{ saveError }}</p>
+</div>
+<iframe ng-src="{{ claUrl }}" width="100%" height="400px"></iframe>
+<form editable-form name="editableForm" onaftersave="putSignature()" oncancel="cancel()" shown="true">
+  <div class="form-group">
+    <div><span editable-checkbox="userAgreed" id="userAgreement"></span> I accept the terms above</div>
+  </div>
+  <div class="buttons">
+    <span>
+      <button type="submit" class="btn" ng-disabled="editableForm.$waiting">Sign</button>
+      <button type="button" class="btn btn-alternate" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">Cancel</button>
+    </span>
+  </div>
+</form>

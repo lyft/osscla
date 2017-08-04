@@ -1,0 +1,66 @@
+*.swp
+
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+!confidant/lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+karma-test-results.xml
+
+# Translations
+*.mo
+
+# build packages or files that shouldn't be in repo
+node_modules
+npm-debug.log
+bower_components
+.sass-cache
+.tmp
+osscla/public/dist
+osscla/public/styles/*.css
+service.env
+
+# Mr Developer (mac, editor, IDEs, etc)
+.mr.developer.cfg
+.project
+.pydevproject
+.vagrant
+.ropeproject
+.tmp
+.sass-cache
+.DS_store
+.zedstate
+.idea
+
+# virtualenv excludes
+venv
+
+# Orchestration excludes
+salt/venv
+salt/.orchestration/*
+!salt/.orchestration/minion
+salt/pillar/local.sls

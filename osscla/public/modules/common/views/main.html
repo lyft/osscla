@@ -1,0 +1,21 @@
+<div class="alert alert-warning" ng-show="saveError">
+  <p>{{ saveError }}</p>
+</div>
+<div class="well">
+  Current version of the CLA: <a href="{{ claUrl }}">{{ claVersion }}</a>
+  <div class="row has-margin-bottom-lg">
+    <div></div>
+    <div class="col-sm-3 h6">Username</div>
+    <div class="col-sm-3 h6">CLA Version</div>
+  </div>
+  <div class="row has-margin-bottom-lg">
+    <div class="col-sm-3">
+      <span>{{ user.username }}</span>
+    </div>
+    <div class="col-sm-3">
+      <span ng-hide="signature"><a ui-sref="sign">Review and sign</a></span>
+      <span ng-show="missingSignature || signatureOutOfDate"><a ui-sref="sign">Review and sign new version</a></span>
+      <span ng-hide="missingSignature || signatureOutOfDate">Signed and current ({{ signature.cla_version }})</span>
+    </div>
+  </div>
+</div>

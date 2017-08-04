@@ -1,0 +1,45 @@
+<div class="well">
+  <div class="row has-margin-bottom-lg">
+    <div></div>
+    <div class="col-md-1 h6">Username</div>
+    <div class="col-md-2 h6">Emails</div>
+    <div class="col-md-2 h6">Name</div>
+    <div class="col-md-1 h6">CLA Version</div>
+    <div class="col-md-2 h6">Modification Date</div>
+    <div class="col-md-1 h6">Signature IP</div>
+    <div class="col-md-2 h6">Corporate CLAs</div>
+    <div class="col-md-1"><a class="btn btn-default" ui-sref="add">Add new</a></div>
+  </div>
+  <div ng-hide="signatures">
+    <p>No signatures.</p>
+  </div>
+  <div class="row has-margin-bottom-lg" ng-repeat="signature in signatures">
+    <div class="col-md-1 dont-break-out">
+      <span>{{ signature.username }}</span>
+    </div>
+    <div class="col-md-2 dont-break-out">
+      <ul class="email-list">
+        <li ng-repeat="email in signature.emails">{{ email }}</li>
+      </ul>
+    </div>
+    <div class="col-md-2 dont-break-out">
+      <span>{{ signature.name }}</span>
+    </div>
+    <div class="col-md-1 dont-break-out">
+      <span>{{ signature.cla_version }} <span ng-show="signature.cla_version != claVersion" class="glyphicon glyphicon-warning"></span></span>
+    </div>
+    <div class="col-md-2 dont-break-out">
+      <span>{{ signature.modified_date }}</span>
+    </div>
+    <div class="col-md-1 dont-break-out">
+      <span>{{ signature.ip_address }}</span>
+    </div>
+    <div class="col-md-2 dont-break-out">
+      <ul class="email-list" ng-if="signature.orgs.length != 0">
+        <li ng-repeat="org in signature.orgs">{{ org }}</li>
+      </ul>
+      <span ng-if="signature.orgs.length == 0">n/a</span>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

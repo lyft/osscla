@@ -1,0 +1,40 @@
+<div class="alert alert-warning" ng-show="saveError">
+  <p>{{ saveError }}</p>
+</div>
+<div class="well">
+<form editable-form name="editableForm" onaftersave="putSignature()" oncancel="cancel()" shown="true">
+  <div class="form-group">
+    <label for="userNameInput">Github Username</label>
+    <div id="userNameInput">
+      <span editable-text="signature.username" e-required>{{ signature.username }}</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="emailAddresses">Email Addresses</label>
+    <div id="emailAddresses">
+      <div editable-tags-input="signature.emails" data-e-form="editableForm" data-e-name="emails" name="emails" id="emails" data-e-ng-model="user.emails" e-placeholder="Add an email address..." onbeforesave="checkEmail()">
+        {{signature.emails}}
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="organizations">Organizations</label>
+    <div id="organizations">
+			<div editable-ui-select="signature.orgs" data-e-form="editableForm" data-e-name="orgs" name="orgs" theme="bootstrap" data-e-ng-model="signature.orgs" data-e-style="min-width:300px;" e-multiple e-required>
+				<editable-ui-select-match placeholder="Select organizations...">
+						{{$item}}
+				</editable-ui-select-match>
+				<editable-ui-select-choices repeat="org in fetchedOrgs">
+					{{org}}
+				</editable-ui-select-choices>
+			</div>
+    </div>
+  </div>
+  <div class="buttons">
+    <span>
+      <button type="submit" class="btn" ng-disabled="editableForm.$waiting">Sign</button>
+      <button type="button" class="btn btn-alternate" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">Cancel</button>
+    </span>
+  </div>
+</form>
+</div>

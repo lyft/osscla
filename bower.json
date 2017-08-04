@@ -1,0 +1,16 @@
+{
+  "name": "osscla",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.6.5",
+    "angular-resource": "~1.6.5",
+    "angular-route": "~1.6.5",
+    "angular-bootstrap": "~2.5.0",
+    "angular-ui-router": "~1.0.5",
+    "angular-xeditable": "~0.8.0",
+    "angular-ui-select": "~0.19.8",
+    "ng-tags-input": "~3.2.0",
+    "bootstrap": "3.3.4"
+  },
+  "appPath": "osscla/public"
+}

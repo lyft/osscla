@@ -1,0 +1,21 @@
+osscla:
+  image: lyft/osscla
+  #build: .
+  #volumes:
+  #  - .:/srv/osscla:rw
+  ports:
+   - "80:80"
+  links:
+   - dynamo
+  env_file: ./service.env
+  environment:
+    HOST: '0.0.0.0'
+    PORT: 80
+    DYNAMODB_CREATE_TABLE: 'true'
+dynamo:
+  volumes:
+    - /mnt/dynamo:/mnt/dynamo:rw,Z
+  ports:
+    - "7777:7777"
+  image: tray/dynamodb-local
+  command: -port 7777 -dbPath /mnt/dynamo

@@ -1,0 +1,18 @@
+import guard
+
+from osscla.app import app
+from osscla import routes  # noqa
+
+CSP_POLICY = {
+    'default-src': ["'self'"],
+    'connect-src': [
+        "'self'",
+        "https://github.com"
+    ],
+    'style-src': [
+        "'self'",
+        "'unsafe-inline'"  # for xeditable
+    ]
+}
+
+app.wsgi_app = guard.ContentSecurityPolicy(app.wsgi_app, CSP_POLICY)
