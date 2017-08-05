@@ -26,7 +26,7 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['bower:install', 'wiredep', 'compass:app']
+        tasks: ['bower:install', 'copy', 'wiredep', 'compass:app']
       },
       js: {
         files: ['<%= project.app %>/modules/**/*.js'],
@@ -47,8 +47,7 @@ module.exports = function (grunt) {
 
     bower: {
       options: {
-        targetDir: '<%= project.app %>/bower_components',
-        copy: false
+        copy: false,
       },
       install: {
         options: {
@@ -56,6 +55,14 @@ module.exports = function (grunt) {
             production: true
           }
         }
+      }
+    },
+
+    copy: {
+      main: {
+        expand: true,
+        src: 'bower_components/**/*',
+        dest: '<%= project.app %>',
       }
     },
 
@@ -181,6 +188,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'bower:install',
+    'copy',
     'compass:clean',
     'compass:app',
     'wiredep',
