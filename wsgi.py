@@ -1,4 +1,4 @@
-from osscla import app
+from osscla.wsgi import app
 
 
 if __name__ == '__main__':
