@@ -57,7 +57,7 @@ else:
     _DEFAULT_LOG_LEVEL = 'INFO'
 LOG_LEVEL = str_env('LOG_LEVEL', _DEFAULT_LOG_LEVEL)
 PORT = int_env('PORT', 80)
-STATIC_FOLDER = str_env('STATIC_FOLDER', 'dist')
+STATIC_FOLDER = str_env('STATIC_FOLDER', 'public')
 
 # Statsd metrics
 
