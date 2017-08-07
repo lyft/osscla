@@ -34,6 +34,7 @@ git clone https://github.com/lyft/osscla
 cd osscla
 virtualenv venv
 source venv/bin/activate
+sudo apt-get install build-essential libssl-dev libffi-dev python-dev
 pip install -r requirements.txt
 deactivate
 ```
@@ -43,9 +44,9 @@ deactivate
 ```bash
 cd /srv/osscla
 sudo apt-get install -y ruby-full npm nodejs nodejs-legacy git git-core
-gem install compass
-npm install grunt-cli
-npm install
+sudo gem install compass
+npm install bower grunt-cli --no-progress
+npm install . --no-progress
 node_modules/grunt-cli/bin/grunt build
 ```
 
@@ -133,6 +134,15 @@ current version of the CLA in the form.
 ```bash
 export CURRENT_CLA_VERSION='1.0'
 export CLA_DIRECTORY=/mnt/osscla/clas'
+```
+
+### SSL settings
+
+osscla enforces SSL by default. If you are developing locally and want to
+disable this functionality this can be achieved with the following command.
+
+```bash
+export SSLIFY=False
 ```
 
 ## Run osscla
