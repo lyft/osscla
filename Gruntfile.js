@@ -161,29 +161,14 @@ module.exports = function (grunt) {
         ]
       }
     },
-
-    // Test settings
-    karma: {
-      unit: {
-        configFile: 'test/karma.conf.js',
-        singleRun: true
-      },
-      ci: {
-        configFile: 'test/karma.conf.js',
-        reporters: ['progress', 'junit'],
-        singleRun: true
-      }
-    }
   });
 
   grunt.registerTask('test', [
     'newer:jshint:all',
-    'karma:unit'
   ]);
 
   grunt.registerTask('testci', [
     'newer:jshint:all',
-    'karma:ci'
   ]);
 
   grunt.registerTask('build', [
