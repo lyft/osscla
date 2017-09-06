@@ -111,6 +111,7 @@ def update_pr_status(full_repo_name, pr_number):
             target_url=app.config['SITE_URL'],
             context=app.config['GITHUB_STATUS_CONTEXT']
         )
+        return
     else:
         last_commit.create_status(
             'pending',
