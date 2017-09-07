@@ -1,5 +1,6 @@
 from os import getenv
 
+
 def bool_env(var_name, default=False):
     """
     Get an environment variable coerced to a boolean value.
