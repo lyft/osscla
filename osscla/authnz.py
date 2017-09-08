@@ -195,13 +195,14 @@ def require_auth(f):
 
 
 def get_csrf_token():
-    if 'XSRF-TOKEN' not in session:
+    cookie_name = app.config['XSRF_COOKIE_NAME']
+    if cookie_name not in session:
         set_csrf_token()
-    return session['XSRF-TOKEN']
+    return session.get(app.config['XSRF_COOKIE_NAME'])
 
 
 def set_csrf_token():
-    session['XSRF-TOKEN'] = '{0:x}'.format(
+    session[app.config['XSRF_COOKIE_NAME']] = '{0:x}'.format(
         random.SystemRandom().getrandbits(160)
     )
 

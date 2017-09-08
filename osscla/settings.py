@@ -91,6 +91,9 @@ SSLIFY = bool_env('SSLIFY', True)
 # CSRF protection
 SESSION_SECRET = str_env('CREDENTIALS_SESSION_SECRET')
 
+# Cookie name for the XSRF token
+XSRF_COOKIE_NAME = str_env('XSRF_COOKIE_NAME', 'XSRF-TOKEN')
+
 # Dynamo storage
 
 # The DynamoDB URL
