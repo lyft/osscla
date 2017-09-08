@@ -14,12 +14,14 @@
      */
     .controller('OssclaMainCtrl', [
         '$scope',
+        '$http',
         '$log',
         'common.UserInfo',
         'common.ClaVersion',
-        function OssclaMainCtrl($scope, $log, UserInfo, ClaVersion) {
+        function OssclaMainCtrl($scope, $http, $log, UserInfo, ClaVersion) {
             UserInfo.get().$promise.then(function(user){
                 $scope.user = user;
+                $http.defaults.xsrfCookieName = user.xsrf_cookie_name;
             });
             ClaVersion.get().$promise.then(function(claVersion){
                 $scope.claVersion = claVersion.cla_version;

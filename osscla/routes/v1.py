@@ -34,7 +34,8 @@ def get_user_info():
     """Get the email address of the currently logged-in user."""
     return jsonify({
         'username': authnz.get_logged_in_username(),
-        'admin': authnz.user_in_role('admin')
+        'admin': authnz.user_in_role('admin'),
+        'xsrf_cookie_name': app.config['XSRF_COOKIE_NAME']
     })
 
 
