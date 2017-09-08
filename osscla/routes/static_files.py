@@ -20,7 +20,10 @@ if ROUTE_PREFIX:
 @authnz.require_auth
 def index():
     response = app.send_static_file('index.html')
-    response.set_cookie('XSRF-TOKEN', authnz.get_csrf_token())
+    response.set_cookie(
+        app.config['XSRF_COOKIE_NAME'],
+        authnz.get_csrf_token()
+    )
     return response
 
 
