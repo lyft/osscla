@@ -48,6 +48,9 @@ def queue_webhook(event_type, payload):
         return
     elif event_type != 'pull_request':
         raise WebhookQueueError('Event type not supported')
+    if payload is None:
+        logger.warning('Received empty payload for {} event'.format(event_type))
+        return
     if 'repository' in payload:
         if payload['repository']['private']:
             logger.debug('Ignoring private repo...')
