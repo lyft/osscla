@@ -133,7 +133,7 @@ current version of the CLA in the form.
 
 ```bash
 export CURRENT_CLA_VERSION='1.0'
-export CLA_DIRECTORY=/mnt/osscla/clas'
+export CLA_DIRECTORY='/mnt/osscla/clas'
 ```
 
 ### SSL settings
