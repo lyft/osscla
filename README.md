@@ -145,6 +145,19 @@ disable this functionality this can be achieved with the following command.
 export SSLIFY=False
 ```
 
+### GitHub Webhooks
+
+If you are integrating osscla with GitHub the following steps will
+ensure events are delivered correctly.
+
+1. Set up your webhook to deliver payloads to
+`{host}/{ROUTE_PREFIX}/v1/github/notification`.
+1. Ensure the content type is `application/json`.
+1. If you are using a webhook secret (`GITHUB_WEBHOOK_SECRET`)
+enter the value into the `Secret` field.
+1. While events sent from GitHub can be configured, it's easiest to select
+`Send me *everything*` as osscla already filters events/actions.
+
 ## Run osscla
 
 In the following we assume _my\_config_ is a bash file with exports for all of
