@@ -1,4 +1,5 @@
 import json
+import re
 
 from pynamodb.exceptions import PutError
 from github import Github
@@ -9,7 +10,8 @@ from osscla.app import app
 from osscla.models.signatures import Signature
 from osscla.models.gh import PullRequest
 
-HANDLED_PR_ACTIONS = ['opened', 'reopened', 'closed', 'synchronize']
+SUPPORTED_EVENTS = ['pull_request', 'issue_comment']
+HANDLED_PR_ACTIONS = ['opened', 'reopened', 'closed', 'synchronize', 'created']
 
 GITHUB_CLIENT = None
 ORG_MEMBERS = {}
@@ -46,7 +48,7 @@ def queue_webhook(event_type, payload):
     if event_type == 'ping':
         # We want to return success on ping
         return
-    elif event_type != 'pull_request':
+    elif event_type not in SUPPORTED_EVENTS:
         raise WebhookQueueError('Event type not supported')
     if payload is None:
         logger.warning('Received empty payload for {} event'.format(event_type))
@@ -59,11 +61,24 @@ def queue_webhook(event_type, payload):
     if payload['action'] not in HANDLED_PR_ACTIONS:
         # No need to raise an exception, just do nothing.
         return
+    # Only take action on :scroll: comments for CLA reruns
+    if payload['action'] == 'created':
+        scroll_character = re.compile(ur'[^\U0001f4dc]+')
+        try:
+            comment = payload['comment']['body']
+        except UnicodeError:
+            return
+        if scroll_character.match(comment):
+            logger.debug('Skipping unactionable comment')
+            return
     full_repo_name = payload['repository']['full_name']
+    pull_request_number = payload.get('number')
+    if pull_request_number is None:
+        pull_request_number = payload['issue']['number']
     _queue_repo_action(
         payload['action'],
         full_repo_name,
-        payload['number']
+        pull_request_number
     )
 
 
