@@ -107,6 +107,18 @@ def role_has_privilege(role, privilege):
     return False
 
 
+def set_xfo_header(response):
+    """Adds X-Frame-Options header to each response."""
+    if request.url_rule is None:
+        rule = ''
+    else:
+        rule = request.url_rule.rule
+    cla_rule = '{0}/clas/<path:path>'.format(app.config['ROUTE_PREFIX'])
+    if rule != cla_rule:
+        response.headers.setdefault('X-Frame-Options', 'deny')
+    return response
+
+
 def require_auth(f):
     @wraps(f)
     def decorated(*args, **kwargs):

@@ -1,5 +1,6 @@
 import guard
 
+import osscla.authnz
 from osscla.app import app
 from osscla import routes  # noqa
 
@@ -16,3 +17,5 @@ CSP_POLICY = {
 }
 
 app.wsgi_app = guard.ContentSecurityPolicy(app.wsgi_app, CSP_POLICY)
+
+app.after_request(osscla.authnz.set_xfo_header)
