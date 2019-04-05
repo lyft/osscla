@@ -9,7 +9,6 @@ authomatic==0.1.0.post1
 boto3==1.4.4
 botocore==1.5.6           # via boto3, pynamodb, s3transfer
 docutils==0.13.1          # via botocore
-flake8==2.4.0
 flask-script==2.0.5
 flask-sslify==0.1.5
 flask==0.10.1
@@ -21,10 +20,7 @@ itsdangerous==0.24        # via flask
 jinja2==2.9.4             # via flask
 jmespath==0.9.1           # via boto3, botocore
 markupsafe==0.23          # via jinja2
-mccabe==0.3.1             # via flake8
-pep8==1.5.7               # via flake8
 py==1.4.32                # via pytest
-pyflakes==0.8.1           # via flake8
 pygithub==1.35
 pyjwt==1.5.2              # via pygithub
 pynamodb==3.0.1
