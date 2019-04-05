@@ -74,10 +74,5 @@ guard==1.0.1
 # Upstream url: https://github.com/PyGithub/PyGithub
 PyGithub==1.35
 
-# The modular source code checker: pep8, pyflakes and co
-# License: MIT
-# Upstream url: http://bitbucket.org/tarek/flake8
-flake8==2.4.0
-
 # Our unit testing framework
 pytest==2.8.5
