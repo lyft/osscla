@@ -113,6 +113,18 @@ def update_pr_status(full_repo_name, pr_number):
     commits = pr.get_commits()
     authors = []
     author_without_login = False
+
+    # Automatically succeed with repos that have been whitelisted.
+    if full_repo_name in app.config['REPOS_WITH_WHITELISTED_CLA']:
+        last_commit = commits[0]
+        last_commit.create_status(
+            'success',
+            description='Whitelisted CLA.',
+            target_url=app.config['SITE_URL'],
+            context=app.config['GITHUB_STATUS_CONTEXT']
+        )
+        return
+
     for commit in commits:
         last_commit = commit
         try:
