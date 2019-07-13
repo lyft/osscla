@@ -152,7 +152,8 @@ WATCHED_ORGS = str_env('WATCHED_ORGS', '').split(',')
 WATCHED_ORGS_RELOAD_INTERVAL = int_env('WATCHED_ORGS_RELOAD_INTERVAL', 1860)
 # ORGS that have a Corporate CLA signed
 CCLA_ORGS = str_env('CCLA_ORGS', '').split(',')
-# A comma separated list of repos in the org that are whitelisted from CLA checks.
+# A comma separated list of repos in the org
+# that are whitelisted from CLA checks.
 # In other words, these repos will pass CLA checks automatically.
 REPOS_WITH_WHITELISTED_CLA = str_env(
     'REPOS_WITH_WHITELISTED_CLA', '').split(',')
