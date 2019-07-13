@@ -1,5 +1,6 @@
 """Module for accessing services external to osscla."""
 
+from __future__ import absolute_import
 import boto3
 
 from osscla import logger

@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import fnmatch
 import random
 import copy
@@ -131,7 +132,7 @@ def require_auth(f):
                     if org.get('login') == app.config['ORGANIZATION']:
                         is_admin = True
             except OrgsNotFound:
-                if not role_has_privilege('user', f.func_name):
+                if not role_has_privilege('user', f.__name__):
                     raise AdminAccessNeeded()
                 else:
                     pass
@@ -147,7 +148,7 @@ def require_auth(f):
                 secure_cookie = True
             else:
                 secure_cookie = False
-            if role_has_privilege('user', f.func_name):
+            if role_has_privilege('user', f.__name__):
                 result = _authomatic.login(
                     WerkzeugAdapter(request, response),
                     'github',
@@ -196,12 +197,12 @@ def require_auth(f):
                     # index.
                     return redirect(url_for('index'))
             return response
-        if role_has_privilege(role, f.func_name):
+        if role_has_privilege(role, f.__name__):
             return f(*args, **kwargs)
         else:
             msg = ('User with email {0}, role {1}, attempted to access'
                    ' function {2} without correct privileges')
-            logger.warning(msg.format(email, role, f.func_name))
+            logger.warning(msg.format(email, role, f.__name__))
             return abort(403)
     return decorated
 

@@ -1,4 +1,17 @@
 repos:
+-   repo: https://github.com/python-modernize/python-modernize
+    rev: '0.7'
+    hooks:
+    -   id: python-modernize
+        language_version: python2.7
+-   repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v2.3.1
+    hooks:
+    -   id: pylint
+        language_version: python3
+        args:
+        -   --py3k
+        -   --disable=round-builtin,comprehension-escape
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.1.0
     hooks:
