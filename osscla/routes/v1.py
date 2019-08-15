@@ -1,5 +1,7 @@
+from __future__ import absolute_import
 import hmac
 import hashlib
+from six.moves import range
 try:
     from hmac import compare_digest
     has_compare_digest = True

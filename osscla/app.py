@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from flask import Flask
 from flask_sslify import SSLify
 

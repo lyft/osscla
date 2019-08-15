@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import json
 import dateutil.parser
 from flask.ext.script import Command, Option
@@ -5,6 +7,7 @@ from flask.ext.script import Command, Option
 import osscla.services
 from osscla.app import app
 from osscla.models.signatures import Signature
+import six
 
 
 class CreateSQSQueue(Command):
@@ -13,9 +16,9 @@ class CreateSQSQueue(Command):
             'sqs',
             endpoint_url=app.config['SQS_URL']
         )
-        print sqs.create_queue(
+        print(sqs.create_queue(
             QueueName=app.config['SQS_QUEUE_NAME']
-        )
+        ))
 
 
 class Import(Command):
@@ -36,7 +39,7 @@ class Import(Command):
                 cla_version=signature['cla_version'],
                 modified_date=dateutil.parser.parse(signature['modified_date'])
             ).save()
-            print 'Signature saved for {0}'.format(signature['username'])
+            print('Signature saved for {0}'.format(signature['username']))
 
 
 class Export(Command):
@@ -59,10 +62,10 @@ class Export(Command):
                 'ip_address': signature.ip_address,
                 'modified_date': signature.modified_date.isoformat()
             }
-        for email, signature in signatures.iteritems():
+        for email, signature in six.iteritems(signatures):
             export.append(signature)
 
         out = json.dumps({'signatures': export})
         with open(output_file, 'w') as f:
             f.write(out)
-        print 'Exported'
+        print('Exported')

@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from pynamodb.models import Model
 from pynamodb.attributes import UnicodeAttribute
 

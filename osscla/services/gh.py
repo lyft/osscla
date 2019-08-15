@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import json
 import re
 
@@ -9,6 +10,7 @@ from osscla import logger
 from osscla.app import app
 from osscla.models.signatures import Signature
 from osscla.models.gh import PullRequest
+import six
 
 SUPPORTED_EVENTS = ['pull_request', 'issue_comment']
 HANDLED_PR_ACTIONS = ['opened', 'reopened', 'closed', 'synchronize', 'created']
@@ -38,7 +40,7 @@ def update_org_membership():
 
 
 def check_org_membership(user):
-    for _, members in ORG_MEMBERS.iteritems():
+    for _, members in six.iteritems(ORG_MEMBERS):
         if user in members:
             return True
     return False
