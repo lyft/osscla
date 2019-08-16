@@ -3,7 +3,7 @@
 # License: BSD
 # Upstream url: http://github.com/mitsuhiko/flask/
 # Use: For API.
-Flask==0.10.1
+Flask>=0.12.3
 
 # Flask Scripting support for Flask
 # License: BSD
@@ -76,3 +76,5 @@ PyGithub==1.35
 
 # Our unit testing framework
 pytest==2.8.5
+
+Pyopenssl>=17.5.0
