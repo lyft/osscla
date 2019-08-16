@@ -5,16 +5,17 @@
 #    control run piptools.compile osscla
 #
 appdirs==1.4.2
+asn1crypto==0.24.0        # via cryptography
 certifi==2017.1.23
 cffi==1.9.1               # via cryptography
-cryptography==1.7.1
+cryptography==2.7
 enum34==1.1.6             # via cryptography
 idna==2.2
 ipaddress==1.0.18         # via cryptography
 ndg-httpsclient==0.4.2
 pyasn1==0.1.9
 pycparser==2.17           # via cffi
-pyopenssl==16.2.0
+pyopenssl==19.0.0
 six==1.10.0               # via cryptography, pyopenssl
 
 pip==9.0.1
