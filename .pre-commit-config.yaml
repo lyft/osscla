@@ -13,9 +13,16 @@ repos:
         -   --py3k
         -   --disable=round-builtin,comprehension-escape
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.1.0
+    rev: v2.3.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+-   repo: https://github.com/pycqa/flake8
+    rev: 3.7.8
     hooks:
     -   id: flake8
-        language_version: python2.7
-        additional_dependencies:
-        -   flake8==2.4.0
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v1.23.0
+    hooks:
+    -   id: pyupgrade

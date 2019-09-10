@@ -1,16 +1,15 @@
 from __future__ import absolute_import
-import gevent
 import gevent.monkey
 gevent.monkey.patch_all(thread=False)
-import gevent.pool
-import json
-import signal
+import gevent.pool  # noqa: E402
+import json  # noqa: E402
+import signal  # noqa: E402
 
-from osscla import logger
-from osscla.app import app
-from osscla.services import stats
-from osscla.services import sqs
-from osscla.services import gh
+from osscla import logger  # noqa: E402
+from osscla.app import app  # noqa: E402
+from osscla.services import stats  # noqa: E402
+from osscla.services import sqs  # noqa: E402
+from osscla.services import gh  # noqa: E402
 
 STATE = {
     'shutdown': False
@@ -100,7 +99,7 @@ def handle_message(client, queue_url):
                     return
             else:
                 logger.error(
-                    '{0} is an unsupported message type.'.format(m_type)
+                    '{} is an unsupported message type.'.format(m_type)
                 )
             client.delete_message(
                 QueueUrl=queue_url,
