@@ -77,7 +77,7 @@ and value like this:
 
 In docker format:
 
-```
+```bash
 MY_VARIABLE=MY_VALUE
 ```
 
