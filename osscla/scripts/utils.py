@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from __future__ import print_function
 import json
 import dateutil.parser
-from flask.ext.script import Command, Option
+from flask_script import Command, Option
 
 import osscla.services
 from osscla.app import app
@@ -39,7 +39,7 @@ class Import(Command):
                 cla_version=signature['cla_version'],
                 modified_date=dateutil.parser.parse(signature['modified_date'])
             ).save()
-            print('Signature saved for {0}'.format(signature['username']))
+            print('Signature saved for {}'.format(signature['username']))
 
 
 class Export(Command):

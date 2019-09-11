@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import absolute_import
-from flask.ext.script import Manager
+from flask_script import Manager
 
 from osscla.app import app
 from osscla.scripts.utils import Import

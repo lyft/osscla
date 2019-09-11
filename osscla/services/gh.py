@@ -65,7 +65,7 @@ def queue_webhook(event_type, payload):
         return
     # Only take action on :scroll: comments for CLA reruns
     if payload['action'] == 'created':
-        scroll_character = re.compile(ur'[^\U0001f4dc]+')
+        scroll_character = re.compile(u'[^\U0001f4dc]+')
         try:
             comment = payload['comment']['body']
         except UnicodeError:
@@ -168,7 +168,7 @@ def update_pr_status(full_repo_name, pr_number):
             try:
                 _pr = PullRequest(
                     username=missing_author,
-                    pr='{0}:{1}'.format(repo.full_name, pr_number)
+                    pr='{}:{}'.format(repo.full_name, pr_number)
                 )
                 _pr.save(
                     pr__null=True
@@ -188,7 +188,7 @@ def update_pr_status(full_repo_name, pr_number):
             context=app.config['GITHUB_STATUS_CONTEXT']
         )
         logger.debug(
-            'Submitted status for missing authors {0}.'.format(
+            'Submitted status for missing authors {}.'.format(
                 ','.join(missing_authors)
             )
         )

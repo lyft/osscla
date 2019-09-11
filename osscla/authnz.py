@@ -114,7 +114,7 @@ def set_xfo_header(response):
         rule = ''
     else:
         rule = request.url_rule.rule
-    cla_rule = '{0}/clas/<path:path>'.format(app.config['ROUTE_PREFIX'])
+    cla_rule = '{}/clas/<path:path>'.format(app.config['ROUTE_PREFIX'])
     if rule != cla_rule:
         response.headers.setdefault('X-Frame-Options', 'deny')
     return response
@@ -215,7 +215,7 @@ def get_csrf_token():
 
 
 def set_csrf_token():
-    session[app.config['XSRF_COOKIE_NAME']] = '{0:x}'.format(
+    session[app.config['XSRF_COOKIE_NAME']] = '{:x}'.format(
         random.SystemRandom().getrandbits(160)
     )
 

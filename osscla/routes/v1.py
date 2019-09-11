@@ -24,13 +24,13 @@ from osscla.services.gh import WebhookQueueError
 ROUTE_PREFIX = app.config['ROUTE_PREFIX']
 
 
-@app.route('{0}/v1/adminlogin'.format(ROUTE_PREFIX), methods=['GET'])
+@app.route('{}/v1/adminlogin'.format(ROUTE_PREFIX), methods=['GET'])
 @authnz.require_auth
 def admin_login():
     redirect(flask.url_for('index'))
 
 
-@app.route('{0}/v1/user/info'.format(ROUTE_PREFIX), methods=['GET'])
+@app.route('{}/v1/user/info'.format(ROUTE_PREFIX), methods=['GET'])
 @authnz.require_auth
 def get_user_info():
     """Get the email address of the currently logged-in user."""
@@ -41,7 +41,7 @@ def get_user_info():
     })
 
 
-@app.route('{0}/v1/current_cla'.format(ROUTE_PREFIX), methods=['GET'])
+@app.route('{}/v1/current_cla'.format(ROUTE_PREFIX), methods=['GET'])
 def get_current_cla():
     """Get the current CLA version."""
     return jsonify({'cla_version': app.config['CURRENT_CLA_VERSION']})
@@ -65,7 +65,7 @@ def _get_addr():
     return addr
 
 
-@app.route('{0}/v1/signature/<username>'.format(ROUTE_PREFIX), methods=['PUT'])
+@app.route('{}/v1/signature/<username>'.format(ROUTE_PREFIX), methods=['PUT'])
 @authnz.require_auth
 @authnz.require_csrf_token
 def put_signature(username):
@@ -164,7 +164,7 @@ def put_signature(username):
     })
 
 
-@app.route('{0}/v1/signature/<username>'.format(ROUTE_PREFIX), methods=['GET'])
+@app.route('{}/v1/signature/<username>'.format(ROUTE_PREFIX), methods=['GET'])
 @authnz.require_auth
 def get_signature(username):
     if not authnz.user_in_role('admin'):
@@ -190,7 +190,7 @@ def get_signature(username):
         return jsonify({'signature': {}})
 
 
-@app.route('{0}/v1/signatures'.format(ROUTE_PREFIX), methods=['GET'])
+@app.route('{}/v1/signatures'.format(ROUTE_PREFIX), methods=['GET'])
 @authnz.require_auth
 def get_signatures():
     signatures = []
@@ -211,7 +211,7 @@ def get_signatures():
     return jsonify({'signatures': signatures})
 
 
-@app.route('{0}/v1/organizations'.format(ROUTE_PREFIX), methods=['GET'])
+@app.route('{}/v1/organizations'.format(ROUTE_PREFIX), methods=['GET'])
 @authnz.require_auth
 def get_organizations():
     return jsonify({'orgs': app.config['CCLA_ORGS']})
@@ -236,13 +236,13 @@ def _compare_digest(x, y):
     return result
 
 
-@app.route('{0}/v1/github/notification'.format(ROUTE_PREFIX), methods=['POST'])
+@app.route('{}/v1/github/notification'.format(ROUTE_PREFIX), methods=['POST'])
 def receive_ghwebhook():
     # Before we do anything, make sure this actually came from a webhook we've
     # setup.
     if app.config['GITHUB_WEBHOOK_SECRET']:
         mac = hmac.new(
-            app.config['GITHUB_WEBHOOK_SECRET'],
+            app.config['GITHUB_WEBHOOK_SECRET'].encode('UTF-8'),
             msg=request.data,
             digestmod=hashlib.sha1
         )
