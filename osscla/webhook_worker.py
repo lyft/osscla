@@ -63,7 +63,7 @@ def handle_webhook(message):
     try:
         gh.update_pr_status(data['full_repo_name'], data['pr_number'])
     except Exception:
-        logger.exception(f"Failed to update status for {data['full_repo_name']}#{data['pr_number']}")
+        logger.exception('Failed to update status for {}#{}'.format(data['full_repo_name'], data['pr_number']))
 
 
 def handle_message(client, queue_url):
