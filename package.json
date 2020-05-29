@@ -23,6 +23,6 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "dist": "grunt build"
+    "dist": "ln -s /srv/service_npm_modules/node_modules /code/osscla-private/node_modules; grunt build"
   }
 }
