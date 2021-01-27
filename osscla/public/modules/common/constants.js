@@ -17,7 +17,7 @@
         ORGANIZATIONS: 'v1/organizations'
     })
 
-    .constant('EMAIL_FORMAT', /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+/)
+    .constant('EMAIL_FORMAT', /^[\[\]a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+/)
 
     ;
 
