@@ -24,7 +24,7 @@ itsdangerous==0.24        # via flask
 jinja2==2.10.1            # via flask
 jmespath==0.9.1           # via boto3, botocore
 markupsafe==0.23          # via jinja2
-py==1.4.32                # via pytest
+py==1.10.0                # via pytest
 pycparser==2.19           # via cffi
 pygithub==1.35
 pyjwt==1.5.2              # via pygithub
