@@ -104,6 +104,13 @@ def _queue_repo_action(action, full_repo_name, pr_number):
 
 
 def update_pr_status(full_repo_name, pr_number):
+    if not full_repo_name:
+        logger.warning(f'Missing required full repo name to update PR #{pr_number} status')
+    if not pr_number:
+        logger.warning(f'Missing required pr number to update {full_repo_name} PR status')
+    if not full_repo_name or not pr_number:
+        return
+
     # We care about the author of all commits in the PR, so we'll find the
     # author of every commit, and ensure they have signatures.
     logger.debug(
@@ -170,9 +177,7 @@ def update_pr_status(full_repo_name, pr_number):
                     username=missing_author,
                     pr='{}:{}'.format(repo.full_name, pr_number)
                 )
-                _pr.save(
-                    pr__null=True
-                )
+                _pr.save()
                 logger.debug(
                     'Saved PR for missing author {}'.format(missing_author)
                 )
