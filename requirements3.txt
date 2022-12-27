@@ -38,4 +38,4 @@ statsd==3.2.1
 werkzeug==0.15.5          # via flask
 
 pip==9.0.1
-setuptools==40.8.0
+setuptools==65.5.1

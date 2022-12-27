@@ -7,4 +7,4 @@
 appdirs==1.4.2
 
 pip==9.0.1
-setuptools==40.8.0
+setuptools==65.5.1
