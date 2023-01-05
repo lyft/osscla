@@ -37,5 +37,5 @@ six==1.10.0               # via cryptography, pynamodb, pyopenssl, python-dateut
 statsd==3.2.1
 werkzeug==0.15.5          # via flask
 
-pip==9.0.1
+pip==21.1
 setuptools==65.5.1
