@@ -21,7 +21,7 @@ greenlet==0.4.12
 guard==1.0.1
 gunicorn==19.7.1
 itsdangerous==0.24        # via flask
-jinja2==2.10.1            # via flask
+jinja2==2.11.3            # via flask
 jmespath==0.9.1           # via boto3, botocore
 markupsafe==0.23          # via jinja2
 py==1.11.0                # via pytest
