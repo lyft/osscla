@@ -27,7 +27,7 @@ markupsafe==0.23          # via jinja2
 py==1.4.32                # via pytest
 pycparser==2.19           # via cffi
 pygithub==1.35
-pyjwt==1.5.2              # via pygithub
+pyjwt==2.4.0              # via pygithub
 pynamodb==3.0.1
 pyopenssl==19.0.0
 pytest==2.8.5
