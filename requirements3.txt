@@ -35,7 +35,7 @@ python-dateutil==2.6.0
 s3transfer==0.1.10        # via boto3
 six==1.10.0               # via cryptography, pynamodb, pyopenssl, python-dateutil
 statsd==3.2.1
-werkzeug==0.15.5          # via flask
+werkzeug==2.2.3          # via flask
 
 pip==21.1
 setuptools==65.5.1
