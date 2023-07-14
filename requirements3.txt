@@ -11,7 +11,7 @@ boto3==1.4.4
 botocore==1.5.6           # via boto3, pynamodb, s3transfer
 cffi==1.12.3              # via cryptography
 click==7.0                # via flask
-cryptography==39.0.1         # via pyopenssl
+cryptography==41.0.2         # via pyopenssl
 docutils==0.13.1          # via botocore
 flask-script==2.0.5
 flask-sslify==0.1.5
