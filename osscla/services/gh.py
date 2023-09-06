@@ -208,7 +208,7 @@ def update_pr_status(full_repo_name, pr_number):
 
 def update_prs_for_username(username):
     logger.debug('Updating PRs for {}'.format(username))
-    for pr in PullRequest.scan(username__eq=username):
+    for pr in PullRequest.scan(PullRequest.username == username):
         full_repo_name, pr_number = pr.pr.split(':')
         logger.debug(
             'Adding an SQS message for {}, {}'.format(full_repo_name, pr_number)
